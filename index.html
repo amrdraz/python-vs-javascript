@@ -1802,12 +1802,7 @@ for key, value in new_list.items():
         <h4 class="f5 mt0 mb2 normal"><strong>JavaScript (ES2015)</strong> / <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries"><code>entries</code></a></h4>
         <div class="overflow-auto ba bw2 b--white br4">
           <pre><code class="language-javascript">const originalDict = { one: 1, two: 2 }
-const newDict = {}
-
-Object.entries(originalDict).forEach(element => {
-  // newDict.element[0] doesn't work - for variable key use []
-  newDict[element[0]] = element[1] * element[1]
-})
+const newDict = Object.entries(originalDict).reduce(newDict, ([key, value]) => ({...newDict, [key]: value * value }), {})
 
 // one 1
 // two 4
